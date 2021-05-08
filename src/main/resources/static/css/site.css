@@ -1,0 +1,98 @@
+:root {
+--main-bg-color:#ffffff;
+--main-bg2-color:#c0c0c0;
+--main-fg-color:#000000;
+}
+
+body {
+  background-Color: var(--main-bg-color);
+  color:var(--main-fg-color);
+  font-size:x-large;
+}
+
+.body-content {
+    margin-top: 72px;
+}
+
+td, th {
+    padding: 10px;
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    vertical-align: top;
+}
+
+tr:nth-child(odd) {
+    background-color: #e4e4e4;
+}
+
+.centeredTable {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table.job-listing {
+    margin: 30px auto;
+    border: 1px solid #e4e4e4;
+    width: 80%;
+}
+
+table.job-listing td:first-child {
+    font-weight: bold;
+}
+
+table.job-listing td:last-child {
+    width: 80%;
+}
+
+label {
+    margin-right: 15px;
+}
+
+.centered {
+    text-align: center;
+}
+
+p {
+    vertical-align: top;
+    margin-left: 30px;
+}
+
+.centeredTable {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.job-listing {
+    border: 1px solid #e4e4e4;
+    width: 80%;
+    background-color: #e4e4e4;
+}
+
+img#egoImage {
+  float: left;
+  border: none;
+  width: 100px;
+  margin-right:10px;
+}
+
+img.voicePrompt {
+  max-height:20px;
+  max-width:20px;
+  height:20px;
+}
+
+div#audio-div {
+  position:absolute;
+  bottom:10px;
+  margin:5px;
+}
+
+div.float-left {
+  float:left;
+  display:inline;
+}

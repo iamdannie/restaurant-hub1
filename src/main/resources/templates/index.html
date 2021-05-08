@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments.html :: head">
+  <title>Home</title>
+</head>
+<body class="container">
+<header th:replace="fragments :: page-header"></header>
+  <div class="container body-content">
+    <h2>Restaurant Hub</h2>
+<!--    &copy; 2021 by Danyale Griffin, all rights reserved.<br /><br />-->
+    <div th:if="${loggedin}">
+      <h1 th:text="'Welcome, ' + ${user.username} + '!'"></h1>
+    </div>
+    <div>
+    </div>
+</div>
+<div>
+  <div th:if="${loggedin}">
+    <form th:action="@{/logout}" method="post">
+      <input type="submit" value="Sign Out"/>
+    </form>
+  </div>
+  <div th:if="${!loggedin}">
+    <div class="float-left">
+      <form th:action="@{/login}" method="post">
+        <input type="submit" value="Log in"/>
+      </form>
+    </div>
+    <div class="float-left">
+    &nbsp;or&nbsp;
+    </div>
+    <div class="float-left">
+      <form th:action="@{/register}" method="post">
+        <input type="submit" value="Register"/>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
