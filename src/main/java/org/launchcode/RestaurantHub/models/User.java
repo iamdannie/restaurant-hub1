@@ -1,5 +1,6 @@
 package org.launchcode.RestaurantHub.models;
 
+import org.dom4j.tree.AbstractEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Entity;
@@ -8,10 +9,11 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.util.Locale;
 
+//@Entity  determines the structure of a table in our relational database
 @Entity
 public class User extends AbstractEntity {
 
-
+//@Id denotes that an integer id field is to be used as an id in the corresponding table in the database
   @Id
   @GeneratedValue
   private int id;
@@ -48,11 +50,14 @@ public class User extends AbstractEntity {
   public String getType() {
     return type;
   }
-  
-  private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+  public int getId() { return id;}
+
+   private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
   public boolean isMatchingPassword(String password) {
     return encoder.matches(password, pwHash);
   }
-  
-  
+
+
+
 }

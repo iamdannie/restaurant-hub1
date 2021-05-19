@@ -21,9 +21,10 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
 
     @Autowired
     AuthenticationController authenticationController;
-    
+
     private static final List<String> whitelist = Arrays.asList("/", "/login", "/register", "/css", "/images", "/js",
-      "/media");
+            "/media");
+
     @Override
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response,
@@ -48,7 +49,7 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
 //        Pattern pattern = Pattern.compile("^(" + requestedURI + ")$|\1?");
 //        return false;
 //    }
-    
+
     private static boolean isWhitelisted(String path) {
         String pathSlash = path, pathRootSlash;
         if (!path.endsWith("/")) pathSlash = path.concat("/");
@@ -58,9 +59,9 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
                 pathRootSlash = pathRoot.concat("/");
             System.out.println("path: " + path + ", " + pathSlash + "\npathRoot: " + pathRoot + ", " + pathRootSlash);
             if (path.equals(pathRoot) ||
-                pathSlash.equals(pathRootSlash) ||
-                (!pathRootSlash.equals("/") && (
-                  (!path.endsWith("/") && pathSlash.startsWith(pathRootSlash))))) {
+                    pathSlash.equals(pathRootSlash) ||
+                    (!pathRootSlash.equals("/") && (
+                            (!path.endsWith("/") && pathSlash.startsWith(pathRootSlash))))) {
                 System.out.println("whitelisted\n");
                 return true;
             }
@@ -68,11 +69,11 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
         return false;
     }
 
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
