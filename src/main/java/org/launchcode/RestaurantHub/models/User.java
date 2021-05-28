@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-import java.util.Locale;
+
 
 //@Entity  determines the structure of a table in our relational database
 @Entity
@@ -24,7 +24,7 @@ public class User extends AbstractEntity {
   private String pwHash;
   @NotNull
   private String type;
-  
+
   public User(String username, String password, String type) {
     this.username = username;
     this.pwHash = encoder.encode(password);
