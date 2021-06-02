@@ -107,7 +107,6 @@ public class AuthenticationController {
     @GetMapping("/login")
     public String displayLoginForm(Model model) {
         model.addAttribute(new LoginFormDTO());
-        model.addAttribute("title", "Login");
         return "login";
     }
 
@@ -146,10 +145,10 @@ public class AuthenticationController {
     public String restricted(HttpServletRequest request) {
         return "restricted";
     }
-
-    @GetMapping("/owner")
-    public String owner(HttpServletRequest request) {
-        return "owner";
-    }
-
+//
+//    @GetMapping("/client")
+//    public String owner(HttpServletRequest request) {
+//        return "client";
+//  }
+//
 }
