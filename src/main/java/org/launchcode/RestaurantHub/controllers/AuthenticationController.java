@@ -1,22 +1,33 @@
 package org.launchcode.RestaurantHub.controllers;
 
 
+import org.launchcode.RestaurantHub.models.User;
 import org.launchcode.RestaurantHub.models.data.UserRepository;
+import org.launchcode.RestaurantHub.models.dto.LoginFormDTO;
+import org.launchcode.RestaurantHub.models.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
 public class AuthenticationController {
     @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
 
     private static final String userSessionKey = "user";
 
-    public SecurityProperties.User getUserFromSession(HttpSession session) {
+    public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
         if (userId == null) {
             return null;
@@ -96,7 +107,6 @@ public class AuthenticationController {
     @GetMapping("/login")
     public String displayLoginForm(Model model) {
         model.addAttribute(new LoginFormDTO());
-        model.addAttribute("title", "Login");
         return "login";
     }
 
@@ -123,20 +133,22 @@ public class AuthenticationController {
         return "login";
     }
 
-    @GetMapping("/logout")
-    public String logout(HttpServletRequest request){
-        request.getSession().invalidate();
-        return "redirect:/";
-    }
+
+
+        @GetMapping("/logout")
+        public String logout(HttpServletRequest request){
+            request.getSession().invalidate();
+            return "redirect:/";
+        }
 
     @GetMapping("/restricted")
     public String restricted(HttpServletRequest request) {
         return "restricted";
     }
-
-    @GetMapping("/owner")
-    public String owner(HttpServletRequest request) {
-        return "owner";
-    }
-
+//
+//    @GetMapping("/client")
+//    public String owner(HttpServletRequest request) {
+//        return "client";
+//  }
+//
 }

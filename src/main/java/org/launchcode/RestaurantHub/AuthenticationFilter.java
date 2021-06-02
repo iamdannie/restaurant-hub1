@@ -1,6 +1,7 @@
 package org.launchcode.RestaurantHub;
 
 import org.launchcode.RestaurantHub.controllers.AuthenticationController;
+import org.launchcode.RestaurantHub.models.Client;
 import org.launchcode.RestaurantHub.models.User;
 import org.launchcode.RestaurantHub.models.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
     AuthenticationController authenticationController;
 
     private static final List<String> whitelist = Arrays.asList("/", "/login", "/register", "/css", "/images", "/js",
-            "/media");
+            "/client");
 
     @Override
     public boolean preHandle(HttpServletRequest request,
@@ -32,8 +33,8 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
 
         HttpSession session = request.getSession();
         User user = authenticationController.getUserFromSession(session);
-
-        // (u The user is logged in
+//        Client client = clientController.getUserFromSession(session);
+                        // (u The user is logged in
         if (user != null) {
             return true;
         }

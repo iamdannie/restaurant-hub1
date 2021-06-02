@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.tymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Welcome </title>
+</head>
+
+<body class="container">
+<h1>Add Restaurant</h1>
+<!--<h1 th:text="'Welcome, ' + ${user.username} + '!'"></h1>-->
+<form th:action="@{/login}" method="post">
+    <div><label>Client Name : <input type ="text " name ="username"/> </label></div>
+    <div><label> Name of Restaurant: <input type="text" name="nameOfRestaurant"/> </label></div>
+    <div><label> Address: <input type="text" name="address"/> </label></div>
+    <div><label> Phone Number: <input type="text" name="phoneNumber"/> </label></div>
+    <div><label> Type of Restaurant: <input type="text" name="typeOfRestaurant"/> </label></div>
+    <div><label> Hour of Operation: <input type="text" name="hourOfOperation"/> </label></div>
+    <div><input type="submit" value="Add Restaurant"/></div>
+</form>
+
+</body>
+</html>
