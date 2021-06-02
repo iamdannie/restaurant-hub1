@@ -1,13 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
-<head th:replace="fragments.html :: head">
-  <title>Home</title>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<!--<head th:replace="fragments.html :: head">-->
+
 </head>
+<style>
+    body {
+        background-color: pink;
+        }
+
+</style>
+<link th:href="@{styles.css}" rel="stylesheet" />
+<title>The Restaurant Hub</title>
+
 <body class="container">
-<header th:replace="fragments :: page-header"></header>
-  <div class="container body-content">
-    <h2>Restaurant Hub</h2>
-    &copy; 2021 by Danyale Griffin, all rights reserved.<br /><br />-->
+
+<!--<header th:replace="fragments :: page-header"></header>-->
+      <h2>Restaurant Hub</h2>
+<video width="320" height="240" controls>
+    <source src="movie.mp4" type="video/mp4">
+
+    Your browser does not support the video tag.
+</video>
+<!--      <img src="restaurant images.jpg" alt ="restaurant image. ">-->
+      <p>For The Food Lover At Heart</p>
+
+<!--    &copy; 2021 by Danyale Griffin, all rights reserved.<br /><br />&ndash;&gt;-->
     <div th:if="${loggedin}">
       <h1 th:text="'Welcome, ' + ${user.username} + '!'"></h1>
     </div>
@@ -16,7 +33,7 @@
 </div>
 <div>
   <div th:if="${loggedin}">
-    <form th:action="@{/logout}" method="post">
+    <form th:action="@{/logout}" method="get">
       <input type="submit" value="Sign Out"/>
     </form>
   </div>
