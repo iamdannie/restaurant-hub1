@@ -2,6 +2,7 @@ package org.launchcode.RestaurantHub.controllers;
 
 
 import org.launchcode.RestaurantHub.models.User;
+import org.launchcode.RestaurantHub.models.data.ClientRepository;
 import org.launchcode.RestaurantHub.models.data.UserRepository;
 import org.launchcode.RestaurantHub.models.dto.LoginFormDTO;
 import org.launchcode.RestaurantHub.models.dto.RegisterFormDTO;
@@ -24,6 +25,9 @@ import java.util.Optional;
 public class AuthenticationController {
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    ClientRepository clientRepository;
 
     private static final String userSessionKey = "user";
 
@@ -59,6 +63,7 @@ public class AuthenticationController {
     public String displayIndex(HttpServletRequest request, Model model) {
         User user = getUserFromSession(request.getSession());
         setupCommonAttributes(model, user, "Home");
+        model.addAttribute("clients",clientRepository.findAll());
         return "index";
     }
 
@@ -121,6 +126,14 @@ public class AuthenticationController {
         }
 
         User existingUser = userRepository.findByUsername(loginFormDTO.getUsername());
+
+//        User existingUser = userRepository.findByUsername(registerFormDTO.getUsername());
+
+        if (existingUser == null) {
+            errors.rejectValue("username", "username.doesnotexists", "A user with that username does not exists");
+            model.addAttribute("title", "Register");
+            return "redirect:register";
+        }
 
         if (existingUser != null) {
             String password = loginFormDTO.getPassword();

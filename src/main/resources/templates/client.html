@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.tymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Welcome </title>
+<head th:replace="fragments.html :: head">
+<title>Add Restaurant</title>
 </head>
 
 <body class="container">
+<header th:replace="fragments :: page-header"></header>
 <h1>Add Restaurant</h1>
 <!--<h1 th:text="'Welcome, ' + ${user.username} + '!'"></h1>-->
     <form method="post">
 
-    <div><label>Client Name : <input type ="text " name ="clientName"/> </label></div>
+    <div><label>Client Name : <input type ="text " name ="clientNam"/> </label></div>
     <div><label> Name of Restaurant: <input type="text" name="nameOfRestaurant"/> </label></div>
     <div><label> Address: <input type="text" name="address"/> </label></div>
     <div><label> Phone Number: <input type="text" name="phoneNumber"/> </label></div>
@@ -20,4 +20,5 @@
 </form>
 
 </body>
+
 </html>
