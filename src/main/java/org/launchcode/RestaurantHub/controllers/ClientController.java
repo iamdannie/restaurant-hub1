@@ -50,6 +50,6 @@ public class ClientController {
 
         Client newClient = new Client(clientFormDTO.getClientName(),clientFormDTO.getNameOfRestaurant(),clientFormDTO.getAddress(),clientFormDTO.getPhoneNumber(),clientFormDTO.getNameOfRestaurant(),clientFormDTO.getHoursOfOperation());
         clientRepository.save(newClient);
-        return "redirect:";
+        return "index";
     }
 }

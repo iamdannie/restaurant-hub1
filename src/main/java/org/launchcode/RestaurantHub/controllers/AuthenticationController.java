@@ -51,7 +51,6 @@ public class AuthenticationController {
     private static void setUserInSession(HttpSession session, User user) {
         session.setAttribute(userSessionKey, user.getId());
     }
-
     private static void setupCommonAttributes(Model model, User user, String title) {
         Boolean loggedin = (user != null && !user.getType().equals("guest"));
         model.addAttribute("loggedin", loggedin);

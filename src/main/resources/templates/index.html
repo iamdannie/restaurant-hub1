@@ -16,42 +16,42 @@
 <body class="container">
 
 <header th:replace="fragments :: page-header"></header>
-      <h2>Restaurant Hub</h2>
+<h2>Restaurant Hub</h2>
 <p>For The Food Lover At Heart</p>
 <div th:if="${loggedin}">
     <h1 th:text="'Welcome, ' + ${user.username} + '!'"></h1>
 </div>
 <video controls autoplay name="media"><source src="/images/toa-heftiba-TwtUYtDOv6w-unsplash.mp4" type="video/mp4"></video>
-      <img src="/images/restauranthome.jpg" alt ="restaurant image. " width="200" height="200"/>
+<img src="/images/restauranthome.jpg" alt ="restaurant image. " width="200" height="200"/>
 
 
 
 <!--    &copy; 2021 by Danyale Griffin, all rights reserved.<br /><br />&ndash;&gt;-->
 
-    <div>
-    </div>
+<div>
+</div>
 </div>
 <div>
-  <div th:if="${loggedin}">
-    <form th:action="@{/logout}" method="get">
-      <input type="submit" value="Sign Out"/>
-    </form>
-  </div>
-  <div th:if="${!loggedin}">
-    <div class="float-left">
-      <form th:action="@{/login}" method="post">
-        <input type="submit" value="Log in"/>
-      </form>
+    <div th:if="${loggedin}">
+        <form th:action="@{/logout}" method="get">
+            <input type="submit" value="Sign Out"/>
+        </form>
     </div>
-    <div class="float-left">
-    &nbsp;or&nbsp;
+    <div th:if="${!loggedin}">
+        <div class="float-left">
+            <form th:action="@{/login}" method="post">
+                <input type="submit" value="Log in"/>
+            </form>
+        </div>
+        <div class="float-left">
+            &nbsp;or&nbsp;
+        </div>
+        <div class="float-left">
+            <form th:action="@{/register}" method="post">
+                <input type="submit" value="Register"/>
+            </form>
+        </div>
     </div>
-    <div class="float-left">
-      <form th:action="@{/register}" method="post">
-        <input type="submit" value="Register"/>
-      </form>
-    </div>
-  </div>
 </div>
 
 <table class="table">
@@ -73,9 +73,8 @@
         <td th:text="${client.phoneNumber}"></td>
         <td th:text="${client.typeOfRestaurant}"></td>
         <td th:text="${client.hoursOfOperation}"></td>
-   </tr>
+    </tr>
 
-</tbody>
+    </tbody>
 </table>
 </body>
-</html>
